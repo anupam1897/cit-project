@@ -14,40 +14,65 @@ This repository contains a Java application along with the necessary files for J
 Its a sample java application for purpose of Jenkins integration and dockerization. 
 
 ## Installation
-[Instructions on how to install and set up the project locally.]
-1. Clone the repo
+Instructions on how to install and set up the project locally.
+Clone this repository 
+``` 
+$ git clone https://github.com/anupam1897/cit-project.git  
+$ cd cit-project
+```
 
 ### Prerequisites
-[List any prerequisites needed to run the project, e.g., software versions, tools.]
 
-### Steps
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/your-username/CIT-project.git
-    ```
-2. [Any additional steps required for installation.]
+1. Jenkins: Follow steps on jenkins website to Install Jenkins. If required install Java too. 
+2. The Jenkinsfile will only Execute without error for Windows only.
+3. Must have docker installed and user must login using their own docker credentials for pushing image to their dockerhub repository.
+``` $ docker login ```
+4. Keep docker-daemon running along with jenkins.
 
-## Usage
-[Instructions on how to use the project.]
-
-### Running the Application
-[Steps to run the application locally.]
 
 ## Jenkins Integration
-[Details on how to integrate the project with Jenkins.]
+Details on how to integrate the project with Jenkins.
 
 ### Jenkinsfile
-[Brief description of the Jenkinsfile and its purpose.]
+Jenkinsfile contains the pipeline for the project which build, deploys and pushes image to dockerhub.
 
 ### Setup Instructions
-[Steps to configure Jenkins for this project.]
+In Jenkins, create and new job and follow the steps
+1. Configure the job
+2. In Pipeline, choose pipeline script from SCM
+3. The choose git for SCM
+4. Add repository URL: https://github.com/anupam1897/cit-project.git
+5. Since it is public repository credentials is not required, leave it to none.
+6. In Branch if is not main, change it to main
+7. In Script path it should be "Jenkinsfile" (Case-sensitive).
 
 ## Dockerization
-[Details on how to containerize the project using Docker.]
+1. To build image
+``` $ docker build -t java-app:v1 .```
+2. To create a container using this image
+``` $ docker run -d --name "java-app" -p 5000:5000 java-app:v1```
+3. After container is up and running, open any browser and search url
+``` localhost:5000 ```
 
 ### Dockerfile
-[Brief description of the Dockerfile and its purpose.]
+Dockerfile helps build docker image. Dockerfile in this repo works in two stages - packaging java application and creating image.
 
-### Building the Docker Image
-```sh
-docker build -t cit-project .
+
+### Docker Image
+You can find docker image built using this Jenkinsfile and dockerfile at https://hub.docker.com/repository/docker/anupam1897/java-app-v1.0.0
+
+You can also use this image to directly run this app in docker 
+``` 
+# Pull the Docker image
+$ docker pull anupam1897/java-app-v1.0.0:66
+
+# Run the Docker container
+$ docker run -p 5000:5000 anupam1897/java-app-v1.0.0:66
+
+```
+
+### Contact
+For any query or suggestion email me at anupam1897@gmail.com
+
+### License
+You are free to use this repository in any way you want.
