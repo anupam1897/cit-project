@@ -58,3 +58,5 @@ hs_err_pid*
 
 # Windows specific files
 Thumbs.db
+
+.notes
