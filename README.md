@@ -1,5 +1,6 @@
-# CIT-project
-This repository contains a Java application along with the necessary files for Jenkins integration (Jenkinsfile) and Dockerization (Dockerfile).
+
+# DevOps Project: CI/CD Pipeline with Jenkins, Docker, and Maven
+This project demonstrates a CI/CD pipeline using Jenkins to build, test, and publish a Java application with Maven. Docker is used for containerization, enabling consistent deployment. The built Docker image is then published to DockerHub, ensuring efficient and scalable application delivery.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
